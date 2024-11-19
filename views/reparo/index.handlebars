@@ -1,0 +1,41 @@
+<section class="container">
+    <section class="d-flex justify-content-between mt-4">
+        <h2>Página inicial do Reparo</h2>
+        <a href="/reparo/create" class="btn btn-primary">Cadastrar novo reparo</a>
+    </section>
+</section>
+
+<hr>
+
+<section class="my-4 container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Carro</th>
+                <th>Data</th>
+                <th>Tipo de Reparo</th>
+                <th>Preço</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each dados}}
+            <tr>
+                <td>{{dataValues.id}}</td>
+                <td>{{dataValues.carro}}</td>
+                <td>{{dataValues.data}}</td>
+                <td>{{dataValues.tipo_reparo}}</td>
+                <td>R${{dataValues.preco}}</td>
+                <td>
+                    <a href="" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal{{dataValues.id}}">Excluir</a>
+                </td>
+            </tr>
+            {{!-- Estamos inserindo um componente que está na pasta partials dentro da views, ao colocarmos o sinal de > indicamos que este componente deve ser buscado da pasta partials--}}
+            {{>modalDeleteReparo idItem=dataValues.id}}
+            {{/each}}
+        </tbody>
+
+    </table>
+</section>
